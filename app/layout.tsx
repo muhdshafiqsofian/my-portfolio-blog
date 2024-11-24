@@ -4,8 +4,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
 import { ThemeProvider } from "@/components/theme-provider";
-import Resume from "./components/resume";
 import { getRepoInfo } from "./api/action";
+import Footer from "./components/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,12 +22,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { stargazers_count, html_url, owner } = await getRepoInfo();
+  const { stargazers_count } = await getRepoInfo();
   // console.log(owner);
 
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className="scrollbar-none">
+      <body className={`${inter.className}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -36,7 +36,7 @@ export default async function RootLayout({
         >
           <Header starCount={stargazers_count} />
           {children}
-          {/* <Resume /> */}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
