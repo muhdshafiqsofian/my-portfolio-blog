@@ -1,6 +1,6 @@
 import React from "react";
 import About from "./components/about";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Github, Twitter } from "lucide-react";
 import Image from "next/image";
 import { getRepoInfo, getResumeJson, validateResumeJson } from "./api/action";
 import Link from "next/link";
@@ -21,14 +21,27 @@ export default async function Home() {
     <>
       <section
         id="home"
-        className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"
+        className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-stone-200 dark:bg-background"
       >
         <div className="flex gap-8 row-start-2 justify-center items-center w-full">
           <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">
             <About />
-            <p className="text-base text-center font-light dark:text-slate-200">
+            <p className="text-base text-center font-light dark:text-slate-200 mt-2">
               Software Developer
             </p>
+            <div className="flex justify-center gap-4 text-sm mt-1">
+              {resumeData.basics?.profiles?.map((item) => {
+                return (
+                  <Link
+                    key={item.url}
+                    href={item.url || "https://github.com/muhdshafiqsofian/"}
+                    target="_blank"
+                  >
+                    {item.network}
+                  </Link>
+                );
+              })}
+            </div>
           </h1>
           <Link href={owner.html_url} target="_blank">
             <Image

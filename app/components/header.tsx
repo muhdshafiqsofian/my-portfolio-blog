@@ -29,7 +29,7 @@ export default function Header({ starCount }: HeaderProps) {
   ];
 
   return (
-    <header className="gap-4 p-4 fixed z-50 w-full">
+    <header className="gap-4 p-4 fixed z-50 w-full bg-stone-200 dark:bg-background">
       <div className="grid grid-cols-3 justify-between items-center">
         <nav>
           <NavigationMenu>
