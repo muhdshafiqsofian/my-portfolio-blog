@@ -7,13 +7,6 @@ import {
 import Link from "next/link";
 import { cn } from "../../lib/utils";
 import { DarkModeToggle } from "./dark-mode-toggle";
-import { Button } from "@/components/ui/button";
-import { Github } from "lucide-react";
-
-type HeaderProps = {
-  starCount: number;
-  url?: string;
-};
 
 type NavItem = {
   name: string;
@@ -21,10 +14,10 @@ type NavItem = {
   icon: React.ReactNode;
 };
 
-export default function Header({ starCount }: HeaderProps) {
+export default function Header() {
   const navItems: NavItem[] = [
-    { name: "About", href: "#resume", icon: null },
-    // { name: "Blog", href: "/blog", icon: null },
+    { name: "About", href: "#about", icon: null },
+    { name: "Projects", href: "#projects", icon: null },
     { name: "Contact", href: "/contact", icon: null },
   ];
 
@@ -39,11 +32,11 @@ export default function Header({ starCount }: HeaderProps) {
                   <Link
                     href={item.href}
                     className={cn(
-                      "flex items-center gap-2 px-4 py-2 rounded-md hover:bg-slate-100 hover:text-black transition"
+                      "flex items-center px-4 py-2 rounded-md hover:underline"
                     )}
                   >
                     <span className="text-lg">{item.icon}</span>
-                    <span>{item.name}</span>
+                    <span className="font-bold">{item.name}</span>
                   </Link>
                 </NavigationMenuItem>
               ))}
@@ -52,11 +45,6 @@ export default function Header({ starCount }: HeaderProps) {
         </nav>
         <div className="flex justify-center"></div>
         <div className="flex gap-4 justify-end">
-          <Button variant="ghost">
-            <Github className="fill-white" />
-            Star {starCount}
-            {/* <Star className="fill-yellow-500 stroke-yellow-700" /> */}
-          </Button>
           <DarkModeToggle />
         </div>
       </div>

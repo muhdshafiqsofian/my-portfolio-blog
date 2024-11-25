@@ -1,6 +1,5 @@
-import resumeSchema from "@jsonresume/schema"
-import { Resume } from "../types";
-import { ResumeSchema } from "@kurone-kito/jsonresume-types";
+// import resumeSchema from "@jsonresume"
+import { ResumeSchema as ResumeSchemaTypes } from "@kurone-kito/jsonresume-types";
 
 export async function getResumeGist() {
    const gistId = "c29c884dbddac3e533b8aa8a610033f9"; 
@@ -13,7 +12,7 @@ export async function getResumeGist() {
    return gistData.files;
 }
 
-export async function getResumeJson():Promise<ResumeSchema> {
+export async function getResumeJson():Promise<ResumeSchemaTypes> {
    const res = await fetch(
      "https://gist.githubusercontent.com/muhdshafiqsofian/c29c884dbddac3e533b8aa8a610033f9/raw/resume.json"
    );
@@ -24,26 +23,26 @@ export async function getResumeJson():Promise<ResumeSchema> {
    return res.json();
  }
 
- export async function validateResumeJson(data: object): Promise<string> {
-   return new Promise((resolve) => {
-     resumeSchema.validate(
-       data,
-       function (err: string, report: string) {
-         if (err) {
-           console.error("The resume was invalid:", err);
-           resolve(false);
-         } else {
-           console.log("Resume validated successfully:", report);
-           resolve(true);
-         }
-       },
-       function (err: string) {
-         console.error("The resume was invalid:", err);
-         resolve(false);
-       }
-     );
-   });
- }
+//  export function validateResumeJson(data: object): Promise<boolean> {
+//    return new Promise((resolve) => {
+//      resumeSchema.validate(
+//        data,
+//        function (err: string, report: boolean) {
+//          if (err) {
+//            console.error("The resume was invalid:", err);
+//            resolve(false);
+//          } else {
+//            console.log("Resume validated successfully:", report);
+//            resolve(true);
+//          }
+//        },
+//        function (err: string) {
+//          console.error("The resume was invalid:", err);
+//          resolve(false);
+//        }
+//      );
+//    });
+//  }
 
 export async function getRepoInfo() {
    const owner = "muhdshafiqsofian"; 

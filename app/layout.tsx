@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
 import { ThemeProvider } from "@/components/theme-provider";
-import { getRepoInfo } from "./api/action";
+// import { getRepoInfo } from "./api/action";
 import Footer from "./components/footer";
 
 const inter = Inter({
@@ -22,7 +22,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { stargazers_count } = await getRepoInfo();
+  // const { stargazers_count } = await getRepoInfo();
   // console.log(owner);
 
   return (
@@ -34,7 +34,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header starCount={stargazers_count} />
+          <Header />
           {children}
           <Footer />
         </ThemeProvider>

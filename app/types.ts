@@ -36,9 +36,4 @@ export type Resume = {
     issuer: string;
     url: URL;
   }[];
-  skills: {
-    name
-    level
-    keywords
-  }
 };
