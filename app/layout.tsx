@@ -2,10 +2,10 @@ import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "./components/header";
+// import Header from "./components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 // import { getRepoInfo } from "./api/action";
-import Footer from "./components/footer";
+// import Footer from "./components/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,9 +34,9 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
+          {/* <Header /> */}
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </ThemeProvider>
       </body>
     </html>

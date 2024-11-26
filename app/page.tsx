@@ -7,6 +7,8 @@ import Link from "next/link";
 import Resume from "./components/resume";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import Header from "./components/header";
+import Footer from "./components/footer";
 
 export default async function Home() {
   const data = await getRepoInfo();
@@ -21,6 +23,7 @@ export default async function Home() {
 
   return (
     <>
+      <Header />
       <section
         id="home"
         className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-stone-200 dark:bg-background"
@@ -65,6 +68,7 @@ export default async function Home() {
         </div>
       </section>
       <Resume {...resumeData} />
+      <Footer />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { faker } from "@faker-js/faker";
+// import { faker } from "@faker-js/faker";
 import { ResumeSchema } from "@kurone-kito/jsonresume-types";
 import dayjs from "dayjs";
 import {
@@ -11,24 +11,25 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 export default function Resume(data: ResumeSchema) {
-  const lorem = faker.lorem.paragraph();
+  // const lorem = faker.lorem.paragraph();
 
   return (
     <section id="resume" className="mx-auto my-10 w-[60%]">
       <div className="grid grid-cols-1 md:grid-cols-[20%_80%] items-start text-justify gap-4">
-        <p id="about" className="text-2xl uppercase font-bold">
+        <label id="about" className="text-2xl uppercase font-bold">
           About
-        </p>
+        </label>
         <div>{data.basics?.summary}</div>
 
-        <p className="text-xl uppercase font-bold">Skills</p>
+        <label className="text-xl uppercase font-bold">Skills</label>
         <div className="flex flex-col gap-4">
           {data.skills?.map((skill) => {
             return (
               <div key={skill.name} className="flex gap-4 items-center">
-                {skill.level}
+                {/* {skill.level} */}
                 {skill.keywords?.map((keyword) => {
                   return (
                     <Badge key={keyword} variant="outline">
@@ -41,16 +42,21 @@ export default function Resume(data: ResumeSchema) {
           })}
         </div>
 
-        <p className="text-xl uppercase font-bold">Experience</p>
+        <label className="text-xl uppercase font-bold">Experience</label>
         <div>
-          {data.work?.map((item) => {
+          {data.work?.map((item, index) => {
+            const isLatestWork = index === 0;
             return (
               <div key={item.name} className="mb-4">
                 <p className="flex justify-between">
                   {item.name}
-                  <span className="text-right">{item.startDate}</span>
+                  <span className="text-right">
+                    {isLatestWork
+                      ? `${dayjs(item.startDate).format("MMM YYYY")} - Present`
+                      : dayjs(item.startDate).format("MMM YYYY")}
+                  </span>
                 </p>
-                <p className="text-sm">{item.position}</p>
+                <p className="text-sm italic">{item.position}</p>
                 <p className="text-muted-foreground mt-2 text-sm">
                   {item.summary}
                 </p>
@@ -64,24 +70,26 @@ export default function Resume(data: ResumeSchema) {
           })}
         </div>
 
-        <p className="text-xl uppercase font-bold">Education</p>
+        <label className="text-xl uppercase font-bold">Education</label>
         <div>
           {data.education?.map((item) => {
             return (
               <div key={item.area} className="mb-4">
                 <p className="flex justify-between">
-                  {`${item.institution}`}
-                  <span>{`${dayjs(item.startDate).format("MMM-YYYY")} - ${dayjs(
+                  <Link href={item.url || ""} target="_blank">
+                    {`${item.institution}`}
+                  </Link>
+                  <span>{`${dayjs(item.startDate).format("MMM YYYY")} - ${dayjs(
                     item.endDate
-                  ).format("MMM-YYYY")}`}</span>
+                  ).format("MMM YYYY")}`}</span>
                 </p>
-                <p className="text-sm">{`${item.area}, ${item.studyType}`}</p>
+                <p className="text-sm italic">{`${item.area}, ${item.studyType}`}</p>
               </div>
             );
           })}
         </div>
 
-        <p className="text-xl uppercase font-bold">Projects</p>
+        <label className="text-xl uppercase font-bold">Projects</label>
         <div
           id="projects"
           className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full flex-wrap"
@@ -94,22 +102,16 @@ export default function Resume(data: ResumeSchema) {
                   <CardDescription>{project.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ul className="list-disc pl-6">
+                  <ul className="list-disc pl-6 text-sm">
                     {project.highlights?.map((highlight) => {
                       return <li key={highlight}>{highlight}</li>;
                     })}
                   </ul>
                 </CardContent>
-                {/* <CardFooter>
-                  <Button variant="outline">Go</Button>
-                </CardFooter> */}
               </Card>
             );
           })}
         </div>
-
-        <p className="text-xl uppercase font-bold">Contact</p>
-        <p>{lorem}</p>
       </div>
     </section>
   );

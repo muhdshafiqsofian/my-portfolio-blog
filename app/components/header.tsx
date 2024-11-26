@@ -14,11 +14,22 @@ type NavItem = {
   icon: React.ReactNode;
 };
 
+const email = "muhdshafiqsofian@gmail.com";
+const subject = "Inquiry About Your Services";
+// const body = `Hi Shafiq, %0AI am interested in learning more about your services. Thank you, Your Name`;
+const body = `Hi Shafiq,%0A%0AI am interested in learning more about your services.%0A%0AThank you,`;
+
 export default function Header() {
   const navItems: NavItem[] = [
     { name: "About", href: "#about", icon: null },
     { name: "Projects", href: "#projects", icon: null },
-    { name: "Contact", href: "/contact", icon: null },
+    {
+      name: "Contact",
+      href: `mailto:${email}?subject=${encodeURIComponent(
+        subject
+      )}&body=${body}`,
+      icon: null,
+    },
   ];
 
   return (
