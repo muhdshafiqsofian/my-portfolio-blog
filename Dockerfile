@@ -10,7 +10,7 @@ COPY . .
 
 # Install Node.js compatibility layer for Deno
 RUN deno install
-RUN deno install -g npm:sharp
+# RUN deno install -g npm:sharp
 
 # Build the Next.js app
 RUN deno task build
