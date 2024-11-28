@@ -9,7 +9,7 @@ WORKDIR /app
 COPY . .
 
 # Install Node.js compatibility layer for Deno
-RUN deno install
+RUN deno install --allow-scripts
 # RUN deno install -g npm:sharp
 
 # Build the Next.js app
