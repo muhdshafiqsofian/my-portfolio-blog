@@ -33,11 +33,11 @@ export default function Header() {
   ];
 
   return (
-    <header className="gap-4 p-4 fixed z-50 w-full bg-stone-200 dark:bg-background">
+    <header className="gap-4 p-4 fixed z-50 bg-stone-200 dark:bg-background">
       <div className="grid grid-cols-3 justify-between items-center">
         <nav>
           <NavigationMenu>
-            <NavigationMenuList className="flex gap-4">
+            <NavigationMenuList className="flex md:gap-4">
               {navItems.map((item) => (
                 <NavigationMenuItem key={item.name}>
                   <Link

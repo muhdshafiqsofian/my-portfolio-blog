@@ -27,7 +27,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className="scrollbar-none">
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} w-full`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

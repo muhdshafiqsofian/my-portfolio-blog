@@ -17,7 +17,7 @@ export default function Resume(data: ResumeSchema) {
   // const lorem = faker.lorem.paragraph();
 
   return (
-    <section id="resume" className="mx-auto my-10 w-[60%]">
+    <section id="resume" className="w-full p-4 md:mx-auto my-10 md:w-[60%]">
       <div className="grid grid-cols-1 md:grid-cols-[20%_80%] items-start text-justify gap-4">
         <label id="about" className="text-2xl uppercase font-bold">
           About
@@ -28,11 +28,18 @@ export default function Resume(data: ResumeSchema) {
         <div className="flex flex-col gap-4">
           {data.skills?.map((skill) => {
             return (
-              <div key={skill.name} className="flex gap-4 items-center">
+              <div
+                key={skill.name}
+                className="flex flex-wrap gap-4 items-center"
+              >
                 {/* {skill.level} */}
                 {skill.keywords?.map((keyword) => {
                   return (
-                    <Badge key={keyword} variant="outline">
+                    <Badge
+                      key={keyword}
+                      variant="outline"
+                      className="flex-grow"
+                    >
                       {keyword}
                     </Badge>
                   );
