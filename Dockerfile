@@ -1,6 +1,6 @@
 # Use the official Deno image
 # FROM denoland/deno:latest
-FROM denoland/deno:alpine
+FROM denoland/deno:latest
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -10,7 +10,7 @@ COPY . .
 
 # Install Node.js compatibility layer for Deno
 RUN deno install --allow-scripts
-# RUN deno install -g npm:sharp
+# RUN deno install --allow-scripts npm:sharp
 
 # Build the Next.js app
 RUN deno task build
