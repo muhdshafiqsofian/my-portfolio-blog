@@ -26,15 +26,17 @@ export default async function Home() {
       <Header />
       <section
         id="home"
-        className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-stone-200 dark:bg-background"
+        className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-stone-200 dark:bg-muted rounded-b-lg"
       >
-        <div className="flex gap-8 row-start-2 justify-center items-center w-full">
-          <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">
-            <About />
+        <div className="flex gap-6 row-start-2 justify-center items-center w-full">
+          <h1 className="lg:w-[250px] text-xl font-extrabold tracking-tight lg:text-4xl">
+            <div className="w-full text-center">
+              <About />
+            </div>
             <p className="text-base text-center font-light text-muted-foreground mt-2">
               Software Developer
             </p>
-            <div className="flex justify-center gap-4 text-sm mt-1">
+            {/* <div className="flex justify-center gap-4 text-sm mt-1">
               {resumeData.basics?.profiles?.map((item) => {
                 return (
                   <Badge key={item.url} variant="outline">
@@ -47,7 +49,7 @@ export default async function Home() {
                   </Badge>
                 );
               })}
-            </div>
+            </div> */}
           </h1>
           <Link href={owner.html_url} target="_blank">
             <Image
@@ -68,7 +70,7 @@ export default async function Home() {
         </div>
       </section>
       <Resume {...resumeData} />
-      <Footer />
+      <Footer {...resumeData} />
     </>
   );
 }
