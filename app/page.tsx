@@ -6,7 +6,6 @@ import { getRepoInfo, getResumeJson } from "./api/action";
 import Link from "next/link";
 import Resume from "./components/resume";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
