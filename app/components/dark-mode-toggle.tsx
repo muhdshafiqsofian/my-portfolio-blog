@@ -10,10 +10,22 @@ export function DarkModeToggle() {
   const { setTheme, systemTheme } = useTheme();
   const [checked, setChecked] = useState<boolean>(false);
 
-  if (!checked && systemTheme === "dark") {
-    setTheme("dark");
-  } else {
-    setTheme("light");
+  // if (systemTheme && systemTheme === "dark") {
+  //   setTheme(systemTheme);
+  // } else {
+  //   setTheme("light");
+  // }
+
+  // if (checked) setTheme("light");
+  // else setTheme("dark");
+
+  function applyTheme(systemTheme: "dark" | "light", checked: boolean): void {
+    const theme = checked ? "light" : systemTheme === "dark" ? "dark" : "light";
+    setTheme(theme);
+  }
+
+  if (systemTheme) {
+    applyTheme(systemTheme, checked);
   }
 
   return (
