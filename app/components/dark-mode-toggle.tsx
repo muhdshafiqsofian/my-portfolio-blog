@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Label } from "@/components/ui/label";
@@ -24,9 +24,11 @@ export function DarkModeToggle() {
     setTheme(theme);
   }
 
-  if (systemTheme) {
-    applyTheme(systemTheme, checked);
-  }
+  useEffect(() => {
+    if (systemTheme) {
+      applyTheme(systemTheme, checked);
+    }
+  }, [checked]);
 
   return (
     <div>
