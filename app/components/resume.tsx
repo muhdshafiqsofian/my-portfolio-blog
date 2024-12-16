@@ -35,11 +35,7 @@ export default function Resume(data: ResumeSchema) {
                 {/* {skill.level} */}
                 {skill.keywords?.map((keyword) => {
                   return (
-                    <Badge
-                      key={keyword}
-                      variant="outline"
-                      className="flex-grow"
-                    >
+                    <Badge key={keyword} variant="outline" className="">
                       {keyword}
                     </Badge>
                   );

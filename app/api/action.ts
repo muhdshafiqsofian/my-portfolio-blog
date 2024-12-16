@@ -14,7 +14,8 @@ export async function getResumeGist() {
 
 export async function getResumeJson():Promise<ResumeSchemaTypes> {
    const res = await fetch(
-     "https://gist.githubusercontent.com/muhdshafiqsofian/c29c884dbddac3e533b8aa8a610033f9/raw/resume.json"
+     "https://gist.githubusercontent.com/muhdshafiqsofian/c29c884dbddac3e533b8aa8a610033f9/raw/resume.json",
+     { next: { revalidate: 86400 } }
    );
  
    if (!res.ok) {
